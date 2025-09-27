@@ -1,0 +1,7 @@
+package runescape;
+
+import net.runelite.mapping.ObfuscatedName;
+
+@ObfuscatedName("eu")
+public interface class118 {
+}

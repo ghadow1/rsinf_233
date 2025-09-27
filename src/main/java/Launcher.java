@@ -1,3 +1,5 @@
+import runescape.client;
+
 import javax.swing.*;
 import java.applet.AppletContext;
 import java.applet.AppletStub;
@@ -7,8 +9,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
-
-import game.client;
 
 public class Launcher implements AppletStub {
 
