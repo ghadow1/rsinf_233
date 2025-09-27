@@ -1,0 +1,59 @@
+package game;
+
+import java.util.ArrayList;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
+@ObfuscatedName("hv")
+public class class204 extends class540 {
+   @ObfuscatedName("af")
+   @ObfuscatedSignature(
+      descriptor = "Lmu;"
+   )
+   public static class320 field2250 = new class320(64);
+   @ObfuscatedName("av")
+   @ObfuscatedGetter(
+      intValue = 2015157683
+   )
+   static int field2249;
+   @ObfuscatedName("bo")
+   @ObfuscatedGetter(
+      intValue = -1045327651
+   )
+   static int field2248;
+
+   @ObfuscatedName("am")
+   @ObfuscatedSignature(
+      descriptor = "(Ljava/util/ArrayList;IIIII)V",
+      garbageValue = "-492388552"
+   )
+   public static void method4497(ArrayList var0, int var1, int var2, int var3, int var4) {
+      class339.field3889.clear();
+      class339.field3889.addAll(var0);
+      class43.method791(var1, var2, var3, var4);
+   }
+
+   @ObfuscatedName("ag")
+   @ObfuscatedSignature(
+      descriptor = "(III)I",
+      garbageValue = "-562433368"
+   )
+   static final int method4496(int var0, int var1) {
+      int var2 = var1 * 57 + var0;
+      var2 ^= var2 << 13;
+      int var3 = var2 * (var2 * var2 * 15731 + 789221) + 1376312589 & Integer.MAX_VALUE;
+      return var3 >> 19 & 255;
+   }
+
+   @ObfuscatedName("is")
+   @ObfuscatedSignature(
+      descriptor = "(II)V",
+      garbageValue = "-943964295"
+   )
+   static void method4499(int var0) {
+      class329 var1 = class130.method3593(class327.field3619, client.field314.field1308);
+      var1.field3664.method11227(var0);
+      client.field314.prepData(var1);
+   }
+}

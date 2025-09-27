@@ -1,0 +1,129 @@
+package game;
+
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
+@ObfuscatedName("ud")
+public class class523 {
+   @ObfuscatedName("af")
+   final int field5531 = 1;
+   @ObfuscatedName("aw")
+   final int field5523 = 2;
+   @ObfuscatedName("at")
+   @ObfuscatedGetter(
+      intValue = -1431655765
+   )
+   final int field5525 = 1;
+   @ObfuscatedName("ac")
+   @ObfuscatedGetter(
+      intValue = -1431655765
+   )
+   final int field5526 = 1;
+   @ObfuscatedName("ap")
+   @ObfuscatedGetter(
+      intValue = -858993459
+   )
+   final int field5527 = 1;
+   @ObfuscatedName("aq")
+   public final int[][] field5535 = new int[3][5];
+   @ObfuscatedName("ao")
+   @ObfuscatedGetter(
+      intValue = 324299373
+   )
+   public int field5529 = -1;
+   @ObfuscatedName("as")
+   @ObfuscatedGetter(
+      intValue = 1724985141
+   )
+   public int field5539 = -1;
+   @ObfuscatedName("al")
+   @ObfuscatedGetter(
+      intValue = -440791843
+   )
+   public int field5524 = -1;
+   @ObfuscatedName("au")
+   @ObfuscatedGetter(
+      intValue = -2118646131
+   )
+   public int field5532 = -1;
+   @ObfuscatedName("ai")
+   @ObfuscatedGetter(
+      intValue = 1505165225
+   )
+   public int field5528 = -1;
+   @ObfuscatedName("aa")
+   @ObfuscatedGetter(
+      intValue = -1844367507
+   )
+   public int field5534 = -1;
+   @ObfuscatedName("am")
+   @ObfuscatedGetter(
+      intValue = -1974990425
+   )
+   public int field5533 = -1;
+   @ObfuscatedName("an")
+   @ObfuscatedGetter(
+      intValue = -638080505
+   )
+   public int field5536 = -1;
+   @ObfuscatedName("ar")
+   @ObfuscatedGetter(
+      intValue = -171607197
+   )
+   public int field5537 = -1;
+   @ObfuscatedName("ae")
+   @ObfuscatedGetter(
+      intValue = -1089927479
+   )
+   public int field5538 = -1;
+   @ObfuscatedName("ay")
+   @ObfuscatedGetter(
+      intValue = -1800979629
+   )
+   public int field5530 = -1;
+
+   @ObfuscatedName("af")
+   @ObfuscatedSignature(
+      descriptor = "(Lpx;I)V",
+      garbageValue = "1719806131"
+   )
+   public void method10435(class412 var1) {
+      byte[] var2 = var1.method8425(class522.field5522.field5520);
+      class590 var3 = new class590(var2);
+
+      while(true) {
+         while(true) {
+            int var4 = var3.method11196();
+            if (var4 == 0) {
+               return;
+            }
+
+            switch(var4) {
+            case 1:
+               var3.method11278();
+               break;
+            case 2:
+               this.field5529 = var3.method11222();
+               this.field5539 = var3.method11222();
+               this.field5524 = var3.method11222();
+               this.field5532 = var3.method11222();
+               this.field5528 = var3.method11222();
+               this.field5534 = var3.method11222();
+               this.field5533 = var3.method11222();
+               this.field5536 = var3.method11222();
+               this.field5537 = var3.method11222();
+               this.field5538 = var3.method11222();
+               this.field5530 = var3.method11222();
+               break;
+            case 3:
+               for(int var5 = 0; var5 < this.field5535.length; ++var5) {
+                  for(int var6 = 0; var6 < this.field5535[var5].length; ++var6) {
+                     this.field5535[var5][var6] = var3.method11278();
+                  }
+               }
+            }
+         }
+      }
+   }
+}
