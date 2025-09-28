@@ -2128,15 +2128,15 @@ public final class client extends class34 implements class493, OAuthApi, class34
 
             if (class333.loginState == class43.field296/* 1209294598 */) {
                 System.out.println("[Outgoing] Hit logged out state: class43.field296 - " + class43.field296.hashCode());
-                if (class121.field1561 == null && (field465.method1975() || field351 > 250)) {
-                    class121.field1561 = field465.method1976();
+                if (class121.secureRandom == null && (field465.method1975() || field351 > 250)) {
+                    class121.secureRandom = field465.method1976();
                     field465.method1973();
                     field465 = null;
                 }
 
                 HitSplatDefinition.method10432(class43.field288);
 
-                if (class121.field1561 != null) {
+                if (class121.secureRandom != null) {
                     System.out.println("Hit here 99999999");
 
                     if (var1 != null) {
@@ -2428,13 +2428,13 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 }
             }
 
-            //..Login block
+            //..Login sender
             if (class43.soemOtherGameState == class333.loginState) {
                 System.out.println("[Outgoing] Hit logged out state: class43.soemOtherGameState - " + class43.soemOtherGameState.hashCode());
                 packetWriter.packetBuffer.offset = 0;
                 packetWriter.method2936();
                 PacketBuffer rsa_buffer = new PacketBuffer(500);
-                int[] xtea = new int[]{class121.field1561.nextInt(), class121.field1561.nextInt(), class121.field1561.nextInt(), class121.field1561.nextInt()};
+                int[] xtea = new int[]{class121.secureRandom.nextInt(), class121.secureRandom.nextInt(), class121.secureRandom.nextInt(), class121.secureRandom.nextInt()};
                 rsa_buffer.offset = 0;
                 rsa_buffer.writeByte(1);
 
@@ -2443,24 +2443,24 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 rsa_buffer.writeIntBigEndian(xtea[2]);
                 rsa_buffer.writeIntBigEndian(xtea[3]);
 
-                rsa_buffer.method11182(class237.field2846); //..Seed?
-                System.out.println("Sending seed : " + class237.field2846);
+                rsa_buffer.method11182(class237.field2846); //..SessionId
+                System.out.println("RSA Data - Session Type: " + class237.field2846);
 
-                if (gameState == 40) {
-                    System.out.println("Sending 40 block");
+                if (gameState == 40) { // Skips
+                    System.out.println("!! Sending 40 block");
                     rsa_buffer.writeIntBigEndian(c_xtea[0]);
                     rsa_buffer.writeIntBigEndian(c_xtea[1]);
                     rsa_buffer.writeIntBigEndian(c_xtea[2]);
                     rsa_buffer.writeIntBigEndian(c_xtea[3]);
                 } else {
-                    if (gameState == 50) {
-                        System.out.println("Sending 50 block");
+                    if (gameState == 50) { // Skipps
+                        System.out.println("!! Sending 50 block");
                         rsa_buffer.writeByte(class131.field1595.vmethod11658());
                         rsa_buffer.writeIntBigEndian(class563.field5778);
                     } else {
-                        //..Auth type?
+                        //..HERE -> Standard Login
                         rsa_buffer.writeByte(field571.vmethod11658());
-                        System.out.println("Sending Auth type? " + field571.vmethod11658());
+                        System.out.println("RSA Data - Authentication Code: " + field571.vmethod11658());
 
                         switch (field571.field1599) {
                             case 0:
@@ -2482,10 +2482,11 @@ public final class client extends class34 implements class493, OAuthApi, class34
                         rsa_buffer.writeByte(class595.field5974.vmethod11658());
                         rsa_buffer.writeNullTermString(this.field607);
                     } else {
-                        rsa_buffer.writeByte(class595.field5970.vmethod11658());
-                        System.out.println("RSA Login Information : Writing Empty Byte = " + class595.field5970.vmethod11658());
+                        rsa_buffer.writeByte(class595.field5970.vmethod11658()); // Extract padding byte (0)
+                        System.out.println("RSA Data - Padding Byte: " + class595.field5970.vmethod11658());
                         rsa_buffer.writeNullTermString(class52.field726);
-                        System.out.println("RSA Login Information : Writing Password = " + class52.field726);
+                        System.out.println("RSA Data - Password Length: " + class52.field726);
+                        System.out.println("RSA Buffer decryption complete");
                     }
                 }
 
