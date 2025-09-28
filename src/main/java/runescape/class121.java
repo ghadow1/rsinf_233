@@ -20,7 +20,7 @@ public class class121 {
     )
     static int field1558 = -2;
     @ObfuscatedName("oh")
-    static SecureRandom field1561;
+    static SecureRandom secureRandom;
     @ObfuscatedName("at")
     final URL field1559;
     @ObfuscatedName("ac")
