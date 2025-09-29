@@ -227,8 +227,8 @@ public class class296 implements class309 {
 
       var4.writeIntBigEndian(var6[0]);
       var4.writeIntBigEndian(var6[1]);
-      var4.method11182(var0);
-      var4.method11182(0L);
+      var4.writeLongIdk(var0);
+      var4.writeLongIdk(0L);
 
       for(var7 = 0; var7 < 4; ++var7) {
          var4.writeIntBigEndian(var3.nextInt());
@@ -241,10 +241,10 @@ public class class296 implements class309 {
          var5.writeIntBigEndian(var3.nextInt());
       }
 
-      var5.method11182(var3.nextLong());
+      var5.writeLongIdk(var3.nextLong());
       var5.method11286(var3.nextLong());
       class19.method295(var5);
-      var5.method11182(var3.nextLong());
+      var5.writeLongIdk(var3.nextLong());
       var5.enableRSA(class49.field705, class49.field706);
       var7 = class288.method6418(var2);
       if (var7 % 8 != 0) {

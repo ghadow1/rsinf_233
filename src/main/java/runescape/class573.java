@@ -29,6 +29,6 @@ final class class573 implements class569 {
       garbageValue = "16896"
    )
    void method11007(Long var1, Buffer var2) {
-      var2.method11182(var1);
+      var2.writeLongIdk(var1);
    }
 }

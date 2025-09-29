@@ -27,6 +27,6 @@ public class class0 implements class3 {
       for(var5 = 0L; !var4.method22(var3.method59(), var3.method60(), var5); ++var5) {
       }
 
-      var2.method11182(var5);
+      var2.writeLongIdk(var5);
    }
 }

@@ -139,7 +139,7 @@ public class Buffer extends class544 {
    }
 
    @ObfuscatedName("bj")
-   public void method11182(long var1) {
+   public void writeLongIdk(long var1) {
       this.array[(this.offset += -290410379) * 1216585693 - 1] = (byte)((int)(var1 >> 56));
       this.array[(this.offset += -290410379) * 1216585693 - 1] = (byte)((int)(var1 >> 48));
       this.array[(this.offset += -290410379) * 1216585693 - 1] = (byte)((int)(var1 >> 40));

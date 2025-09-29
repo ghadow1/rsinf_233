@@ -104,7 +104,7 @@ public class class242 {
                         var0.writeByte(0);
                      } else if (var11 instanceof Number) {
                         var0.writeByte(1);
-                        var0.method11182(((Number)var11).longValue());
+                        var0.writeLongIdk(((Number)var11).longValue());
                      } else if (var11 instanceof String) {
                         var0.writeByte(2);
                         var0.writeNullTermString((String)var11);

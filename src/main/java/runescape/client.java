@@ -2390,6 +2390,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 }
 
                 if (((class511) var1).vmethod10194(1)) {
+                    System.out.println("Looking for unsigned byte");
                     var13 = ((class511) var1).readUnsignedByte();
                     if (class70.field963 != null) {
                         class70.field963.method3049();
@@ -2403,6 +2404,8 @@ public final class client extends class34 implements class493, OAuthApi, class34
                     }
 
                     var2.offset = 0;
+                    System.out.println("44444  setting byte: "+class43.field291);
+
                     HitSplatDefinition.method10432(class43.field291);
                 }
             }
@@ -2430,7 +2433,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
 
             //..Login sender
             if (class43.soemOtherGameState == class333.loginState) {
-                System.out.println("[Outgoing] Hit logged out state: class43.soemOtherGameState - " + class43.soemOtherGameState.hashCode());
+                System.out.println("[Outgoing] Attemping to login!!! - " + class43.soemOtherGameState.hashCode());
                 packetWriter.packetBuffer.offset = 0;
                 packetWriter.method2936();
                 PacketBuffer rsa_buffer = new PacketBuffer(500);
@@ -2443,7 +2446,8 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 rsa_buffer.writeIntBigEndian(xtea[2]);
                 rsa_buffer.writeIntBigEndian(xtea[3]);
 
-                rsa_buffer.method11182(class237.field2846); //..SessionId
+                // Extract session information
+                rsa_buffer.writeLongIdk(class237.field2846);
                 System.out.println("RSA Data - Session Type: " + class237.field2846);
 
                 if (gameState == 40) { // Skips
@@ -2453,12 +2457,12 @@ public final class client extends class34 implements class493, OAuthApi, class34
                     rsa_buffer.writeIntBigEndian(c_xtea[2]);
                     rsa_buffer.writeIntBigEndian(c_xtea[3]);
                 } else {
-                    if (gameState == 50) { // Skipps
+                    if (gameState == 50) { // Skips
                         System.out.println("!! Sending 50 block");
                         rsa_buffer.writeByte(class131.field1595.vmethod11658());
                         rsa_buffer.writeIntBigEndian(class563.field5778);
                     } else {
-                        //..HERE -> Standard Login
+                        //..Handle authentication type
                         rsa_buffer.writeByte(field571.vmethod11658());
                         System.out.println("RSA Data - Authentication Code: " + field571.vmethod11658());
 
@@ -2483,7 +2487,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                         rsa_buffer.writeNullTermString(this.field607);
                     } else {
                         rsa_buffer.writeByte(class595.field5970.vmethod11658()); // Extract padding byte (0)
-                        System.out.println("RSA Data - Padding Byte: " + class595.field5970.vmethod11658());
+                        System.out.println("RSA Data - Paddicng Byte: " + class595.field5970.vmethod11658());
                         rsa_buffer.writeNullTermString(class52.field726);
                         System.out.println("RSA Data - Password Length: " + class52.field726);
                         System.out.println("RSA Buffer decryption complete");
@@ -2504,35 +2508,55 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 var6.out = new PacketBuffer(5000);
                 var6.out.offset = 0;
 
-                //..Seed
+                System.out.println("LOGIN HEADER");
+                System.out.println("Starting login data push");
+                //..Login Type (Opcode) - server:buffer.g1();
                 if (gameState == 40) {
-                    System.out.println("Sending block 40 res 1 : " + class331.field3812.field3819);
+                    System.out.println("int opcode = buffer.g1();");
+                    //System.out.println("BLOCK 40 : Sending opcode:  -> byte: " + class331.field3812.field3819);
                     var6.out.writeByte(class331.field3813.field3819);
                 } else {
-                    System.out.println("Sending block 40 res 2 : " + class331.field3812.field3819);
+                    System.out.println("int opcode = buffer.g1();");
+                    //System.out.println("NOT BLOCK 40 : Sending opcode:  -> byte: " + class331.field3812.field3819);
                     var6.out.writeByte(class331.field3812.field3819);
                 }
-
-                var6.out.writeShortBigEndian(0); //..0
+                //..buffer length ?
+                var6.out.writeShortBigEndian(0);
+                System.out.println("int length = buffer.g2() & 0xFF;");
+                //System.out.println("Sending empty short-be: " + 0);
                 int var14 = var6.out.offset * 1216585693;
 
+                //..Client Revision
                 var6.out.writeIntBigEndian(233); //..Revision
-                var6.out.writeIntBigEndian(1); // 1 none
+                System.out.println("int firstClientType = buffer.g4() & 0xFF;");
+                //System.out.println("Sending empty int-be: " + 233);
 
+                //..Empty Spacer 2
+                var6.out.writeIntBigEndian(1); // 1 none
+                System.out.println("int empty_spacer_first = buffer.g4() & 0xFF;");
+
+                //..For some reason there is a revision call but it's always true
+                //..Possible for beta
                 if (class585.field5890 >= 232) {
-                    System.out.println("Sending the >= 232 / " + class585.field5890);
+                    System.out.println("int secondClientType = buffer.g4() & 0xFF;");
+                    //System.out.println("REVISION OVER 233 ? / revision: " + class585.field5890);
                     var6.out.writeIntBigEndian(class585.field5890);
                 }
 
+                //..Platform Type
                 var6.out.writeByte(clientType);
-                System.out.println("Sending the clientType " + clientType);
+                System.out.println("int platformType = buffer.g1();");
+                //System.out.println("Sending the clientType " + clientType);
 
+                //..(hasExternalAuth)
                 var6.out.writeByte(field390);
-                System.out.println("Sending the byte field390" + field390);
+                System.out.println("int authType = buffer.g1();");
+                //System.out.println("Sending the byte field390" + field390);
 
-                //..Password
-                byte var8 = 0;
-                var6.out.writeByte(var8);
+                //..Empty Spacer
+                var6.out.writeByte(0);
+                System.out.println("int empty_spacer_second = buffer.g1();");
+
                 var6.out.copyArray(rsa_buffer.array, 0, rsa_buffer.offset * 1216585693);
                 int var9 = var6.out.offset * 1216585693;
 
@@ -2543,13 +2567,15 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 var6.out.writeShortBigEndian(class396.screenHeight);
                 class19.method295(var6.out);
 
-                //..Get the session token
+                // Extract session token
                 var6.out.writeNullTermString(class99.sessionToken1);
                 System.out.println("Sending the sessionToken1 " + class99.sessionToken1);
+
                 //..Fetch the affiliate id
                 var6.out.writeIntBigEndian(class293.affiliateID);
                 System.out.println("Sending the affiliateID " + class293.affiliateID);
-                //..Replaced random bytes from previous builds
+
+                // Parse deep links
                 var6.out.writeByte(0);
                 System.out.println("Sending the empty byte");
 
@@ -2562,7 +2588,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 var6.out.writeByte(clientType);
                 var6.out.writeIntBigEndian(0);
 
-                //..Check beta status and send data accordingly
+                //..Process all the server and client crc data
                 if (class509.isBetaBuild) {
                     System.out.println("Using beta login methods");
                     class145.method3748(var6);
@@ -2661,7 +2687,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                     HitSplatDefinition.method10432(class43.field287);
                 } else {
                     if (var13 != 69) {
-                        System.out.println("DOES NOT EQUAL 69 var13: " + var13);
+                        System.out.println("Pushing login response != 69: " + var13);
                         class211.loginResponse(var13);
                         return;
                     }
@@ -2812,8 +2838,8 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 //..13
                 if (class333.loginState == class43.field298 && ((class511) var1).available() >= 1) {
                     System.out.println("[Incoming] Hit logged out state: class43.field298 - " + class43.field298.hashCode());
-
-                    class67.field918 = ((class511) var1).readUnsignedByte();
+                    //..TODO THIS ISNT RIGHT BUT FORCES LOGIN?
+                    class67.field918 = ((class511) var1).readUnsignedByte(); // 37 NEEDS TO BE
                     System.out.println("Incoming 13, is class67.field918 : " + class67.field918 + ",  !=  class331.field3816.field3820 : " + class331.field3816.field3820);
                     if (class67.field918 != class331.field3816.field3820) {
                         System.out.println("Invalid login - returning response code " + class67.field918);
@@ -3142,6 +3168,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                                 }
 
                                 if (var46 != null) {
+                                    System.out.println("Writing some shit mouse ??");
                                     var46.out.method11191(var46.out.offset * 1216585693 - var3);
                                     var7 = var46.out.offset * 1216585693;
                                     var46.out.offset = var3 * -290410379;

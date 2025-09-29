@@ -231,7 +231,7 @@ public class class519 {
          var1.writeByte(1);
 
          for(var2 = 0; var2 < this.field5502 * -1549457881; ++var2) {
-            var1.method11182(this.field5508[var2]);
+            var1.writeLongIdk(this.field5508[var2]);
          }
       } else if (this.field5504 == class574.field5824) {
          var1.writeByte(2);
