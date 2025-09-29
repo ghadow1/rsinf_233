@@ -128,8 +128,8 @@ public class class171 extends class544 {
          var3 = var1.method11196();
       }
 
-      super.field5600 = var1.method11203();
-      this.field1922 = var1.method11203();
+      super.field5600 = var1.readLong();
+      this.field1922 = var1.readLong();
       this.field1919 = var1.method11207();
       var1.method11412();
       this.field1921 = var1.method11197();
@@ -141,7 +141,7 @@ public class class171 extends class544 {
          for(int var5 = 0; var5 < var4; ++var5) {
             class153 var6 = new class153();
             if (this.field1924) {
-               var1.method11203();
+               var1.readLong();
             }
 
             if (this.field1923) {

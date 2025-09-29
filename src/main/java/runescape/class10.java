@@ -21,7 +21,7 @@ public class class10 {
    @ObfuscatedSignature(
       descriptor = "Ltf;"
    )
-   static class511 field50;
+   static SBuffer field50;
    @ObfuscatedName("af")
    final HttpsURLConnection field48;
    @ObfuscatedName("aw")

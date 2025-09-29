@@ -146,7 +146,7 @@ public class class124 extends class500 {
             }
          }
 
-         class364.method7522(var2, var3, true);
+         class364.loadGameScene(var2, var3, true);
       } else {
          var2 = var1.method11422();
          var3 = var1.method11181();
@@ -215,7 +215,7 @@ public class class124 extends class500 {
             }
          }
 
-         class364.method7522(var2, var3, !var15);
+         class364.loadGameScene(var2, var3, !var15);
       }
 
    }

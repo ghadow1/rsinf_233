@@ -2120,7 +2120,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
             garbageValue = "718805315"
     )
     final void doCycleLoggedOut() {
-        Object var1 = packetWriter.getSocket(); //..AbstractSocket
+        SBuffer inBuffer = packetWriter.getSocket(); //..AbstractSocket
         PacketBuffer var2 = packetWriter.packetBuffer;
 
         try {
@@ -2134,14 +2134,14 @@ public final class client extends class34 implements class493, OAuthApi, class34
                     field465 = null;
                 }
 
-                HitSplatDefinition.method10432(class43.field288);
+                HitSplatDefinition.setLoginState(class43.field288);
 
                 if (class121.secureRandom != null) {
-                    System.out.println("Hit here 99999999");
+                    System.out.println("ISSUE WITH THE SECURE RANDOM!!!!!!");
 
-                    if (var1 != null) {
-                        ((class511) var1).vmethod10196();
-                        var1 = null;
+                    if (inBuffer != null) {
+                        inBuffer.vmethod10196();
+                        inBuffer = null;
                     }
 
                     class412.field4979 = null;
@@ -2152,7 +2152,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                         if (this.method799()) {
                             try {
                                 this.method910(class263.field3124);
-                                HitSplatDefinition.method10432(class43.field309);
+                                HitSplatDefinition.setLoginState(class43.field309);
                             } catch (Throwable var23) {
                                 class508.RunException_sendStackTrace((String) null, var23);
                                 class211.loginResponse(65);
@@ -2166,7 +2166,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
 
                             try {
                                 this.method804(class304.field3472, class186.field2025);
-                                HitSplatDefinition.method10432(class43.field308);
+                                HitSplatDefinition.setLoginState(class43.field308);
                             } catch (Exception var22) {
                                 class508.RunException_sendStackTrace((String) null, var22);
                                 class211.loginResponse(65);
@@ -2174,7 +2174,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                             }
                         }
                     } else {
-                        HitSplatDefinition.method10432(class43.field288);
+                        HitSplatDefinition.setLoginState(class43.field288);
                     }
                 }
             }
@@ -2257,7 +2257,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 }
 
                 this.method803(class274.field3221);
-                HitSplatDefinition.method10432(class43.field308);
+                HitSplatDefinition.setLoginState(class43.field308);
             }
 
             if (class333.loginState == class43.field308) {
@@ -2334,7 +2334,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 }
 
                 field351 = 0;
-                HitSplatDefinition.method10432(class43.field288);
+                HitSplatDefinition.setLoginState(class43.field288);
             }
 
             if (class333.loginState == class43.field288/* 1519056913 */) {
@@ -2352,10 +2352,10 @@ public final class client extends class34 implements class493, OAuthApi, class34
                     System.out.println("class412.field4979.field3154 == 1");
                     Socket var29 = (Socket) class412.field4979.field3155;
                     class512 var27 = new class512(var29, 40000, 5000);
-                    var1 = var27;
+                    inBuffer = var27;
                     packetWriter.method2951(var27);
                     class412.field4979 = null;
-                    HitSplatDefinition.method10432(class43.field310);
+                    HitSplatDefinition.setLoginState(class43.field310);
                 }
             }
 
@@ -2378,10 +2378,10 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 packetWriter.addNode(var31);
                 packetWriter.flush();
                 var2.offset = 0;
-                HitSplatDefinition.method10432(class43.field290);
+                HitSplatDefinition.setLoginState(class43.field290);
             }
 
-            int var13;
+            int response;
             if (class333.loginState == class43.field290) {
                 System.out.println("[Outgoing] Hit logged out state: class43.field290 - " + class43.field290.hashCode());
 
@@ -2389,45 +2389,45 @@ public final class client extends class34 implements class493, OAuthApi, class34
                     class70.field963.method3049();
                 }
 
-                if (((class511) var1).vmethod10194(1)) {
+                if (inBuffer.vmethod10194(1)) {
                     System.out.println("Looking for unsigned byte");
-                    var13 = ((class511) var1).readUnsignedByte();
+                    response = inBuffer.readUnsignedByte();
                     if (class70.field963 != null) {
                         class70.field963.method3049();
                     }
 
-                    if (var13 != 0) {
+                    if (response != 0) {
                         //..
                         System.out.println("NO LOGIN RETURNING RESPONSE CODE ");
-                        class211.loginResponse(var13);
+                        class211.loginResponse(response);
                         return;
                     }
 
                     var2.offset = 0;
                     System.out.println("44444  setting byte: "+class43.field291);
 
-                    HitSplatDefinition.method10432(class43.field291);
+                    HitSplatDefinition.setLoginState(class43.field291);
                 }
             }
 
             if (class333.loginState == class43.field291) {
                 System.out.println("[Outgoing] Hit logged out state: class43.field291 - " + class43.field291.hashCode());
                 if (var2.offset * 1216585693 < 8) {
-                    var13 = ((class511) var1).available();
-                    if (var13 > 8 - var2.offset * 1216585693) {
-                        var13 = 8 - var2.offset * 1216585693;
+                    response = inBuffer.available();
+                    if (response > 8 - var2.offset * 1216585693) {
+                        response = 8 - var2.offset * 1216585693;
                     }
 
-                    if (var13 > 0) {
-                        ((class511) var1).read(var2.array, var2.offset * 1216585693, var13);
-                        var2.offset += var13 * -290410379;
+                    if (response > 0) {
+                        inBuffer.read(var2.array, var2.offset * 1216585693, response);
+                        var2.offset += response * -290410379;
                     }
                 }
 
                 if (var2.offset * 1216585693 == 8) {
                     var2.offset = 0;
-                    class237.field2846 = var2.method11203();
-                    HitSplatDefinition.method10432(class43.soemOtherGameState);
+                    class237.field2846 = var2.readLong();
+                    HitSplatDefinition.setLoginState(class43.soemOtherGameState);
                 }
             }
 
@@ -2651,73 +2651,93 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 }
                 var2.newIsaacCipher(var11);
 
-                HitSplatDefinition.method10432(class43.field301);
+                HitSplatDefinition.setLoginState(class43.field301);
                 System.out.println("Passing login block? ");
+                //..END LOGIN BLOCKS
             }
 
+            //..LOGIN RESPONSES ?
             int var15;
-            if (class333.loginState == class43.field301 && ((class511) var1).available() > 0) {
-                System.out.println("[Outgoing] Hit logged out state: class43.field301 - " + class43.field301.hashCode());
+            if (class333.loginState == class43.field301) {
+                assert inBuffer != null;
+                if (inBuffer.available() > 0) {
 
-                var13 = ((class511) var1).readUnsignedByte();
-                if (var13 == 61) {
-                    var15 = ((class511) var1).available();
-                    class563.field5781 = var15 == 1 && ((class511) var1).readUnsignedByte() == 1;
-                    HitSplatDefinition.method10432(class43.soemOtherGameState);
-                }
+                    //..Incoming login response code
+                    response = inBuffer.readUnsignedByte();
+                    System.out.println("[INCOMING LOGIN RESPONSE] Login response code: " + response);
 
-                if (var13 == 21 && gameState == 20) {
-                    System.out.println("testing 34343434");
-                    HitSplatDefinition.method10432(class43.field305);
-                } else if (var13 == 2) {
-                    if (class509.isBetaBuild) {
-                        HitSplatDefinition.method10432(class43.field304);
+                    //..Handle the response
+                    if (response == 61) {
+                        System.out.println("RESPONSE 1 IS 61?");
+                        var15 = inBuffer.available();
+                        class563.field5781 = var15 == 1 && inBuffer.readUnsignedByte() == 1;
+                        HitSplatDefinition.setLoginState(class43.soemOtherGameState);
                     } else {
-                        HitSplatDefinition.method10432(class43.field298);
-                    }
-                } else if (var13 == 15 && gameState == 40) {
-                    packetWriter.serverPacketLength = -1;
-                    HitSplatDefinition.method10432(class43.field307);
-                } else if (var13 == 64) {
-                    HitSplatDefinition.method10432(class43.field297);
-                } else if (var13 == 23 && field448 < 1) {
-                    ++field448;
-                    HitSplatDefinition.method10432(class43.field296);
-                } else if (var13 == 29) {
-                    HitSplatDefinition.method10432(class43.field287);
-                } else {
-                    if (var13 != 69) {
-                        System.out.println("Pushing login response != 69: " + var13);
-                        class211.loginResponse(var13);
-                        return;
+                        System.out.println("RESPONSE 1 IS " + response);
                     }
 
-                    HitSplatDefinition.method10432(class43.field294);
+                    //..
+                    if (response == 21 && gameState == 20) {
+                        System.out.println("testing 34343434");
+                        HitSplatDefinition.setLoginState(class43.field305);
+                    } else if (response == 2) {
+                        System.out.println("[INCOMING LOGIN RESPONSE] Response is 2!??!: " + response);
+                        if (class509.isBetaBuild) {
+                            System.out.println("testing IS BETA");
+                            HitSplatDefinition.setLoginState(class43.field304);
+                        } else {
+                            System.out.println("testing NOT BETA");
+                            HitSplatDefinition.setLoginState(class43.field298);
+                        }
+                    } else if (response == 15 && gameState == 40) {
+                        System.out.println("testing response == 15 && gameState == 40");
+                        packetWriter.serverPacketLength = -1;
+                        HitSplatDefinition.setLoginState(class43.field307);
+                    } else if (response == 64) {
+                        System.out.println("testing response == 64");
+                        HitSplatDefinition.setLoginState(class43.field297);
+                    } else if (response == 23 && field448 < 1) {
+                        System.out.println("testing response == 23 && field448 < 1");
+                        ++field448;
+                        HitSplatDefinition.setLoginState(class43.field296);
+                    } else if (response == 29) {
+                        System.out.println("testing response == 29");
+                        HitSplatDefinition.setLoginState(class43.field287);
+                    } else {
+                        if (response != 69) {
+                            System.out.println("Pushing login response != 69: " + response);
+                            class211.loginResponse(response);
+                            return;
+                        }
+                        System.out.println("testing default reached : " + class43.field294);
+                        HitSplatDefinition.setLoginState(class43.field294);
+                    }
                 }
             }
 
+            //..Hits here after
             if (class333.loginState == class43.field304) {
-                System.out.println("[Outgoing] Hit logged out state: class43.field304 - " + class43.field304.hashCode());
+                System.out.println("[Outgoing2222222] Hit logged out state: class43.field304 - " + class43.field304.hashCode());
 
                 class55.field793 = true;
                 class68.method2161(class70.field962);
                 class121.updateGameState(0);
             }
 
-            if (class43.field294 == class333.loginState && ((class511) var1).available() >= 2) {
+            if (class43.field294 == class333.loginState && inBuffer.available() >= 2) {
                 System.out.println("[Outgoing] Hit logged out state: class43.field294 - " + class43.field294.hashCode());
 
-                ((class511) var1).read(var2.array, 0, 2);
+                inBuffer.read(var2.array, 0, 2);
                 var2.offset = 0;
                 class235.field2812 = var2.readUnsignedShort();
-                HitSplatDefinition.method10432(class43.field312);
+                HitSplatDefinition.setLoginState(class43.field312);
             }
 
-            if (class43.field312 == class333.loginState && ((class511) var1).available() >= class235.field2812) {
+            if (class43.field312 == class333.loginState && inBuffer.available() >= class235.field2812) {
                 System.out.println("[Outgoing] Hit logged out state: class43.field312 - " + class43.field312.hashCode());
 
                 var2.offset = 0;
-                ((class511) var1).read(var2.array, var2.offset * 1216585693, class235.field2812);
+                inBuffer.read(var2.array, var2.offset * 1216585693, class235.field2812);
                 class6[] var32 = new class6[]{class6.field14};
                 class6 var39 = var32[var2.method11196()];
 
@@ -2726,7 +2746,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                         case 0:
                             class0 var33 = new class0();
                             this.field618 = new class7(var2, var33);
-                            HitSplatDefinition.method10432(class43.field293);
+                            HitSplatDefinition.setLoginState(class43.field293);
                             break;
                         default:
                             throw new IllegalArgumentException();
@@ -2764,38 +2784,39 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 packetWriter.addNode(var31);
                 packetWriter.flush();
                 this.field617 = null;
-                HitSplatDefinition.method10432(class43.field301);
+                HitSplatDefinition.setLoginState(class43.field301);
             }
 
-            if (class333.loginState == class43.field297 && ((class511) var1).available() > 0) {
+            if (class333.loginState == class43.field297 && inBuffer.available() > 0) {
                 System.out.println("[Outgoing] Hit logged out state: class43.field297 - " + class43.field297.hashCode());
 
-                class108.field1425 = ((class511) var1).readUnsignedByte();
-                HitSplatDefinition.method10432(class43.field299);
+                class108.field1425 = inBuffer.readUnsignedByte();
+                HitSplatDefinition.setLoginState(class43.field299);
             }
 
-            if (class43.field299 == class333.loginState && ((class511) var1).available() >= class108.field1425) {
+            if (class43.field299 == class333.loginState && inBuffer.available() >= class108.field1425) {
                 System.out.println("[Outgoing] Hit logged out state: class43.field299 - " + class43.field299.hashCode());
 
-                ((class511) var1).read(var2.array, 0, class108.field1425);
+                inBuffer.read(var2.array, 0, class108.field1425);
                 var2.offset = 0;
-                HitSplatDefinition.method10432(class43.field301);
+                HitSplatDefinition.setLoginState(class43.field301);
             }
 
-            if (class333.loginState == class43.field305 && ((class511) var1).available() > 0) {
+            if (class333.loginState == class43.field305 && inBuffer.available() > 0) {
                 System.out.println("[Outgoing] Hit logged out state: class43.field305 - " + class43.field305.hashCode());
 
-                field464 = (((class511) var1).readUnsignedByte() + 3) * 60;
-                HitSplatDefinition.method10432(class43.field300);
+                field464 = (inBuffer.readUnsignedByte() + 3) * 60;
+                HitSplatDefinition.setLoginState(class43.field300);
             }
 
+            //..WORLD HOPPER?
             if (class333.loginState == class43.field300) {
                 System.out.println("[Outgoing] Hit logged out state: class43.field300 - " + class43.field300.hashCode());
 
                 field351 = 0;
                 class66.method2147("You have only just left another world.", "Your profile will be transferred in:", field464 / 60 + " seconds.");
                 if (--field464 <= 0) {
-                    HitSplatDefinition.method10432(class43.field296);
+                    HitSplatDefinition.setLoginState(class43.field296);
                 }
 
             } else if (class333.loginState == class43.field311) {
@@ -2830,36 +2851,44 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 var31.out.putIntCustomEndian(0);
                 packetWriter.addNode(var31);
                 packetWriter.flush();
-                HitSplatDefinition.method10432(class43.field298);
+                HitSplatDefinition.setLoginState(class43.field298);
 
             } else {
-                //..READING (ABOVE WRITING)
-
+                //..READING INCOMING LOGIN CODES ?? (ABOVE WRITING)
+                //...............................................................
+                //...............................................................
                 //..13
-                if (class333.loginState == class43.field298 && ((class511) var1).available() >= 1) {
-                    System.out.println("[Incoming] Hit logged out state: class43.field298 - " + class43.field298.hashCode());
+                if (class333.loginState == class43.field298 && inBuffer.available() >= 1) {
+                    System.out.println("[Incoming] Hit logged out state: class43.field298 - " + class43.field298);
                     //..TODO THIS ISNT RIGHT BUT FORCES LOGIN?
-                    class67.field918 = ((class511) var1).readUnsignedByte(); // 37 NEEDS TO BE
-                    System.out.println("Incoming 13, is class67.field918 : " + class67.field918 + ",  !=  class331.field3816.field3820 : " + class331.field3816.field3820);
+
+                    class67.field918 = inBuffer.readUnsignedByte();
+                    ; // 37 NEEDS TO BE
+
+                    System.out.println("Incoming Login, STATIC SIZE VALUE : " + class67.field918 + ",  !=  class331.field3816.field3820 : " + class331.field3816.field3820);
+                    //..Size is incorrect
                     if (class67.field918 != class331.field3816.field3820) {
-                        System.out.println("Invalid login - returning response code " + class67.field918);
+                        System.out.println("!! Invalid login - returning response code " + class67.field918);
                         class211.loginResponse(class67.field918);
                         return;
                     }
 
                     System.out.println("PASSED STATE 13");
-                    HitSplatDefinition.method10432(class43.field302);
+                    HitSplatDefinition.setLoginState(class43.field302);
                 }
 
-                //..State 15?
-                if (class333.loginState == class43.field302 && ((class511) var1).available() >= class67.field918) {
+                //..AFTER 37 SECOND LOGIN ISSAC
+                if (class333.loginState == class43.field302 && inBuffer.available() >= class67.field918) {
                     System.out.println("[Incoming] Hit logged out state: class43.field302 - " + class43.field302.hashCode());
 
-                    boolean saveLoginInformation = ((class511) var1).readUnsignedByte() == 1;
-                    ((class511) var1).read(var2.array, 0, 4);
-                    var2.offset = 0;
+                    int result = inBuffer.readUnsignedByte();
+                    boolean saveLoginInformation = result == 1;
+                    System.out.println("SAVE LOGIN INFO ? boolean : " + saveLoginInformation + " ....  result=" + result);
 
-                    boolean var42 = false;
+
+
+                    inBuffer.read(var2.array, 0, 4);
+                    var2.offset = 0;
                     if (saveLoginInformation) {
                         var15 = var2.readByteIsaac() << 24;
                         var15 |= var2.readByteIsaac() << 16;
@@ -2876,32 +2905,43 @@ public final class client extends class34 implements class493, OAuthApi, class34
 
                     //..Incoming server response
                     class61.savePreferences();
-                    field428 = ((class511) var1).readUnsignedByte();
-                    field430 = ((class511) var1).readUnsignedByte() == 1;
-                    field491 = ((class511) var1).readUnsignedByte();
+                    System.out.println("getWorldResponse() >>>>   ???");
+                    field428 = inBuffer.readUnsignedByte();
+                    System.out.println("field428 : "+field428);
+                    field430 = inBuffer.readUnsignedByte() == 1;
+                    System.out.println("field430 : "+field430);
+                    field491 = inBuffer.readUnsignedByte();
+                    System.out.println("field491 : "+field491);
                     field491 <<= 8;
-                    field491 += ((class511) var1).readUnsignedByte();
-                    field344 = ((class511) var1).readUnsignedByte();
-                    ((class511) var1).read(var2.array, 0, 8);
+                    field491 += inBuffer.readUnsignedByte();
+                    System.out.println("field491 : "+field491);
+                    field344 = inBuffer.readUnsignedByte();
+                    System.out.println("field344 : "+field344);
+
+
+                    //..Here idk
+                    inBuffer.read(var2.array, 0, 8);
                     var2.offset = 0;
-                    this.field619 = var2.method11203();
-                    ((class511) var1).read(var2.array, 0, 8);
+                    this.field619 = var2.readLong();
+                    inBuffer.read(var2.array, 0, 8);
                     var2.offset = 0;
-                    field509 = var2.method11203();
-                    ((class511) var1).read(var2.array, 0, 8);
+                    field509 = var2.readLong();
+                    inBuffer.read(var2.array, 0, 8);
                     var2.offset = 0;
-                    field510 = var2.method11203();
+                    field510 = var2.readLong();
+
+
                     class259.method5905().method5984(this.field349);
-                    HitSplatDefinition.method10432(class43.field303);
+                    HitSplatDefinition.setLoginState(class43.field303);
                 }
 
-                if (class333.loginState == class43.field303 && ((class511) var1).available() >= packetWriter.serverPacketLength) {
+                if (class333.loginState == class43.field303 && inBuffer.available() >= packetWriter.serverPacketLength) {
                     System.out.println("[Incoming] Hit logged out state: class43.field303 - " + class43.field303.hashCode());
 
-                    ((class511) var1).read(var2.array, 0, 1);
+                    inBuffer.read(var2.array, 0, 1);
                     var2.offset = 0;
                     if (var2.method11142()) {
-                        ((class511) var1).read(var2.array, 1, 1);
+                        inBuffer.read(var2.array, 1, 1);
                         var2.offset = 0;
                     }
 
@@ -2913,7 +2953,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
 
                     packetWriter.serverPacket = var34[var15];
                     packetWriter.serverPacketLength = packetWriter.serverPacket.length;
-                    ((class511) var1).read(var2.array, 0, 2);
+                    inBuffer.read(var2.array, 0, 2);
                     var2.offset = 0;
                     packetWriter.serverPacketLength = var2.readUnsignedShort();
 
@@ -2923,15 +2963,15 @@ public final class client extends class34 implements class493, OAuthApi, class34
                     } catch (Throwable var16) {
                     }
 
-                    HitSplatDefinition.method10432(class43.field289);
+                    HitSplatDefinition.setLoginState(class43.field289);
                 }
 
                 if (class333.loginState == class43.field289) {
-                    System.out.println("[Incoming] Hit logged out state: class43.field289 - " + class43.field289.hashCode());
+                    System.out.println("[SERVER PACKET!!!] Hit logged out state: class43.field289 - " + class43.field289.hashCode());
 
-                    if (((class511) var1).available() >= packetWriter.serverPacketLength) {
+                    if (inBuffer.available() >= packetWriter.serverPacketLength) {
                         var2.offset = 0;
-                        ((class511) var1).read(var2.array, 0, packetWriter.serverPacketLength);
+                        inBuffer.read(var2.array, 0, packetWriter.serverPacketLength);
                         timer.method8250();
                         class365.method7601();
                         field335.method2850(var2);
@@ -2943,21 +2983,21 @@ public final class client extends class34 implements class493, OAuthApi, class34
                     }
 
                 } else {
-                    if (class43.field287 == class333.loginState && ((class511) var1).available() >= 2) {
+                    if (class43.field287 == class333.loginState && inBuffer.available() >= 2) {
                         System.out.println("[Incoming] Hit logged out state: class43.field287 - " + class43.field287.hashCode());
 
                         var2.offset = 0;
-                        ((class511) var1).read(var2.array, 0, 2);
+                        inBuffer.read(var2.array, 0, 2);
                         var2.offset = 0;
                         class131.field1601 = var2.readUnsignedShort();
-                        HitSplatDefinition.method10432(class43.field306);
+                        HitSplatDefinition.setLoginState(class43.field306);
                     }
 
-                    if (class333.loginState == class43.field306 && ((class511) var1).available() >= class131.field1601) {
+                    if (class333.loginState == class43.field306 && inBuffer.available() >= class131.field1601) {
                         System.out.println("[Incoming] Hit logged out state: class43.field306 - " + class43.field306.hashCode());
 
                         var2.offset = 0;
-                        ((class511) var1).read(var2.array, 0, class131.field1601);
+                        inBuffer.read(var2.array, 0, class131.field1601);
                         var2.offset = 0;
                         String var36 = var2.method11207();
                         String var40 = var2.method11207();
@@ -2973,23 +3013,23 @@ public final class client extends class34 implements class493, OAuthApi, class34
                         System.out.println("[Incoming] Hit logged out state: class43.field307 - " + class43.field307.hashCode());
 
                         if (packetWriter.serverPacketLength == -1) {
-                            if (((class511) var1).available() < 2) {
+                            if (inBuffer.available() < 2) {
                                 return;
                             }
 
-                            ((class511) var1).read(var2.array, 0, 2);
+                            inBuffer.read(var2.array, 0, 2);
                             var2.offset = 0;
                             packetWriter.serverPacketLength = var2.readUnsignedShort();
                         }
 
-                        if (((class511) var1).available() >= packetWriter.serverPacketLength) {
-                            ((class511) var1).read(var2.array, 0, packetWriter.serverPacketLength);
+                        if (inBuffer.available() >= packetWriter.serverPacketLength) {
+                            inBuffer.read(var2.array, 0, packetWriter.serverPacketLength);
                             var2.offset = 0;
-                            var13 = packetWriter.serverPacketLength;
+                            response = packetWriter.serverPacketLength;
                             timer.method8252();
                             class298.method6784();
                             field335.method2850(var2);
-                            if (var13 != var2.offset * 1216585693) {
+                            if (response != var2.offset * 1216585693) {
                                 throw new RuntimeException();
                             }
                         }
@@ -3004,7 +3044,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                                 }
 
                                 ++field448;
-                                HitSplatDefinition.method10432(class43.field296);
+                                HitSplatDefinition.setLoginState(class43.field296);
                             } else {
                                 class211.loginResponse(-3);
                             }
@@ -3021,7 +3061,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 }
 
                 ++field448;
-                HitSplatDefinition.method10432(class43.field296);
+                HitSplatDefinition.setLoginState(class43.field296);
             } else {
                 class211.loginResponse(-2);
             }
@@ -4163,7 +4203,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
     )
     final boolean packetHandle(class92 var1) {
         System.out.println("Here server incomingServerPackets decoding");
-        class511 var2 = var1.getSocket();
+        SBuffer var2 = var1.getSocket();
         PacketBuffer var3 = var1.packetBuffer;
         if (var2 == null) {
             System.out.println("SDAD");
@@ -4843,7 +4883,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 if (ServerPackets.UPDATE_TRADINGPOST == var1.serverPacket) {
                     var108 = var3.method11196() == 1;
                     if (var108) {
-                        class371.field4311 = class189.method4284() - var3.method11203();
+                        class371.field4311 = class189.method4284() - var3.readLong();
                         class477.field5305 = new class414(var3, true);
                     } else {
                         class477.field5305 = null;
@@ -4965,7 +5005,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 String var39;
                 if (ServerPackets.MESSAGE_FRIENDCHANNEL == var1.serverPacket) {
                     var52 = var3.method11207();
-                    var30 = var3.method11203();
+                    var30 = var3.readLong();
                     var32 = (long) var3.readUnsignedShort();
                     var34 = (long) var3.method11278();
                     class397 var109 = (class397) class173.findEnumerated(class446.method8926(), var3.method11196());
@@ -5628,6 +5668,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 }
 
                 if (ServerPackets.REBUILD_REGION == var1.serverPacket) {
+                    System.out.println("* REBUILD_REGION PACKET REACHED");
                     class124.method3552(true, var1.packetBuffer);
                     var1.serverPacket = null;
                     return true;
@@ -6191,7 +6232,7 @@ public final class client extends class34 implements class493, OAuthApi, class34
                 }
 
                 if (ServerPackets.ACCOUNT_FLAGS == var1.serverPacket) {
-                    var3.method11203();
+                    var3.readLong();
                     var1.serverPacket = null;
                     return true;
                 }

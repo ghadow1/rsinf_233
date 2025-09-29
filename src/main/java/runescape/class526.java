@@ -51,7 +51,7 @@ public abstract class class526 extends class314 implements class599 {
       if (var5 == Integer.class) {
          var4.field5985 = var1.read32BitArray();
       } else if (var5 == Long.class) {
-         var4.field5985 = var1.method11203();
+         var4.field5985 = var1.readLong();
       } else if (var5 == String.class) {
          var4.field5985 = var1.method11361();
       } else {

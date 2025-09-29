@@ -59,7 +59,7 @@ public class class128 extends class500 {
                   break;
                }
 
-               var0 = var0.substring(0, var3) + class511.method10167(class34.method637(var1, var2 - 1)) + var0.substring(var3 + 2);
+               var0 = var0.substring(0, var3) + SBuffer.method10167(class34.method637(var1, var2 - 1)) + var0.substring(var3 + 2);
             }
          }
       }

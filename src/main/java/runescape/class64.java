@@ -55,7 +55,7 @@ public class class64 extends class544 {
                int var8 = var6.read(var7.array, var7.offset * 1216585693, 1000 - var7.offset * 1216585693);
                if (var8 == -1) {
                   var7.offset = 0;
-                  long var10 = var7.method11203();
+                  long var10 = var7.readLong();
                   var1 = var10;
                   break;
                }

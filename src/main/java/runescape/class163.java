@@ -47,13 +47,13 @@ public class class163 extends class167 {
    void vmethod4108(Buffer var1) {
       if (var1.method11196() != 255) {
          var1.offset -= -290410379;
-         var1.method11203();
+         var1.readLong();
       }
 
       this.field1878 = var1.method11206();
       this.field1877 = var1.readUnsignedShort();
       this.field1874 = var1.method11197();
-      var1.method11203();
+      var1.readLong();
    }
 
    @ObfuscatedName("aw")

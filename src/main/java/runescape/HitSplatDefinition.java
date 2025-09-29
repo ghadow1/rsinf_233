@@ -31,8 +31,8 @@ public class HitSplatDefinition {
             descriptor = "(Lbk;B)V",
             garbageValue = "28"
     )
-    static void method10432(class43 var0) {
-        System.out.println("Setting login state again 33 : " + var0.toString());
+    static void setLoginState(class43 var0) {
+        System.out.println("[LOGIN STATE CHANGE] setLoginState : " + var0.getClass().getName());
         if (class333.loginState != var0) {
             class333.loginState = var0;
         }

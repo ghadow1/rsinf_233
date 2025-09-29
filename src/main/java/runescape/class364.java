@@ -54,7 +54,7 @@ public class class364 {
       descriptor = "(IIZB)V",
       garbageValue = "38"
    )
-   static final void method7522(int var0, int var1, boolean var2) {
+   static final void loadGameScene(int var0, int var1, boolean var2) {
       if (!var2 || var0 != class269.field3187 || class201.field2210 != var1) {
          class269.field3187 = var0;
          class201.field2210 = var1;

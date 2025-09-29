@@ -6,7 +6,7 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("ts")
-public class class512 extends class511 {
+public class class512 extends SBuffer {
    @ObfuscatedName("af")
    Socket field5449;
    @ObfuscatedName("aw")

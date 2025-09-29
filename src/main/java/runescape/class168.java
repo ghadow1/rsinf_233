@@ -40,8 +40,8 @@ public class class168 {
       garbageValue = "111"
    )
    void method4039(Buffer var1) {
-      this.field1895 = var1.method11203();
-      this.field1898 = var1.method11203();
+      this.field1895 = var1.readLong();
+      this.field1898 = var1.readLong();
 
       for(int var2 = var1.method11196(); var2 != 0; var2 = var1.method11196()) {
          Object var3;

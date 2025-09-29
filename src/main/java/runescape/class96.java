@@ -189,7 +189,7 @@ public class class96 {
          }
 
          var6 = field1330[this.field1334 - 1];
-         int var7 = class511.method10164(var6 - 1);
+         int var7 = SBuffer.method10164(var6 - 1);
          var4.field1502[0] = var1.method3467(var7);
          var4.field1502[1] = var1.method3467(var7);
          int var8 = 2;

@@ -43,7 +43,7 @@ public class class157 extends class167 {
       this.field1817 = var1.readUnsignedShort();
       this.field1813 = var1.method11197();
       this.field1815 = var1.readUnsignedShort();
-      var1.method11203();
+      var1.readLong();
       this.field1816 = var1.method11207();
    }
 

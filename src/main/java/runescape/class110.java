@@ -126,7 +126,7 @@ public class class110 extends class544 {
       var2.method3462(this.field1474[var1], 0);
       this.field1456 = new float[field1459];
       var2.method3465();
-      int var3 = var2.method3467(class511.method10164(field1477.length - 1));
+      int var3 = var2.method3467(SBuffer.method10164(field1477.length - 1));
       boolean var4 = field1463[var3];
       int var5 = var4 ? field1459 : field1458;
       boolean var6 = false;
@@ -237,7 +237,7 @@ public class class110 extends class544 {
             var23[var28 * 4 + 1] = (var30 - var32) * var33 + (var29 - var31) * var34;
          }
 
-         var28 = class511.method10164(var5 - 1);
+         var28 = SBuffer.method10164(var5 - 1);
 
          int var48;
          int var49;
@@ -476,7 +476,7 @@ public class class110 extends class544 {
          }
 
          int[] var22 = new int[var6];
-         int var11 = class511.method10164(var6 - 1);
+         int var11 = SBuffer.method10164(var6 - 1);
 
          for(int var12 = 0; var12 < var6; ++var12) {
             int var16 = var12;

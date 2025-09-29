@@ -37,7 +37,7 @@ public class class175 extends class151 {
    )
    void vmethod4111(Buffer var1) {
       this.field1943 = var1.read32BitArray();
-      this.field1942 = var1.method11203();
+      this.field1942 = var1.readLong();
    }
 
    @ObfuscatedName("aw")

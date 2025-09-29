@@ -95,7 +95,7 @@ public enum class394 implements class430 {
             long[] var7 = new long[var1];
 
             for(var4 = 0; var4 < var1; ++var4) {
-               var7[var4] = var0.method11203();
+               var7[var4] = var0.readLong();
             }
 
             return class108.method3371(var7);

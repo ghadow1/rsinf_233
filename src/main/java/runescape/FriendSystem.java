@@ -842,7 +842,7 @@ public class FriendSystem {
                      System.out.println(" Wrong something logging out setting state 20");
                      class55.field793 = false;
                      class121.updateGameState(20);
-                     HitSplatDefinition.method10432(class43.field311);
+                     HitSplatDefinition.setLoginState(class43.field311);
                   }
 
                }

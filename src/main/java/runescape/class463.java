@@ -40,6 +40,6 @@ public class class463 {
       garbageValue = "299094537"
    )
    public static class605[] method9400(class412 var0, int var1, int var2) {
-      return !class587.method11132(var0, var1, var2) ? null : class511.method10192();
+      return !class587.method11132(var0, var1, var2) ? null : SBuffer.method10192();
    }
 }

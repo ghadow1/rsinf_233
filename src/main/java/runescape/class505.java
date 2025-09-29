@@ -763,7 +763,7 @@ public class class505 extends class544 implements class598 {
                   class285.field3296 = "Can't login? Click here.";
                }
 
-               class511.field5447 = new class449(class294.field3397, var30, var1.method9415(class285.field3296), 11);
+               SBuffer.field5447 = new class449(class294.field3397, var30, var1.method9415(class285.field3296), 11);
                class537.field5585 = new class449(class294.field3397, var30, var1.method9415("Still having trouble logging in?"), 11);
                var1.method9506(class285.field3296, class294.field3397, var30, 16777215, 0);
             } else if (class52.field758 == 3) {

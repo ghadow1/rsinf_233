@@ -34,7 +34,7 @@ public class class107 {
          var3 = 0;
 
          for(var4 = var1.method3467(5) + 1; var3 < this.field1420; ++var4) {
-            int var5 = var1.method3467(class511.method10164(this.field1420 - var3));
+            int var5 = var1.method3467(SBuffer.method10164(this.field1420 - var3));
 
             for(var6 = 0; var6 < var5; ++var6) {
                this.field1423[var3++] = var4;

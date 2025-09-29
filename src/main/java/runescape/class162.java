@@ -669,7 +669,7 @@ public class class162 {
 
             for(var4 = 0; var4 < this.field1854; ++var4) {
                if (this.field1851) {
-                  this.field1855[var4] = var1.method11203();
+                  this.field1855[var4] = var1.readLong();
                }
 
                if (this.field1868) {
@@ -708,7 +708,7 @@ public class class162 {
 
             for(var4 = 0; var4 < this.field1862; ++var4) {
                if (this.field1851) {
-                  this.field1863[var4] = var1.method11203();
+                  this.field1863[var4] = var1.readLong();
                }
 
                if (this.field1868) {
@@ -730,7 +730,7 @@ public class class162 {
                      int var12 = var1.read32BitArray();
                      this.field1849.method8590(new class543(var12), (long)var6);
                   } else if (var7 == 1) {
-                     long var10 = var1.method11203();
+                     long var10 = var1.readLong();
                      this.field1849.method8590(new class542(var10), (long)var6);
                   } else if (var7 == 2) {
                      String var8 = var1.method11207();

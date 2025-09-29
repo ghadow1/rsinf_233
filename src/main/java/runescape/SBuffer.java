@@ -5,14 +5,14 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("tf")
-public abstract class class511 {
+public abstract class SBuffer {
    @ObfuscatedName("bj")
    @ObfuscatedSignature(
       descriptor = "Lrw;"
    )
    static class449 field5447;
 
-   class511() {
+   SBuffer() {
    }
 
    @ObfuscatedName("af")

@@ -43,7 +43,7 @@ public class class149 extends class151 {
    void vmethod4111(Buffer var1) {
       if (var1.method11196() != 255) {
          var1.offset -= -290410379;
-         this.field1762 = var1.method11203();
+         this.field1762 = var1.readLong();
       }
 
       this.field1759 = var1.method11206();

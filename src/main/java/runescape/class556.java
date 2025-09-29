@@ -489,7 +489,7 @@ public class class556 {
                      return 1;
                   } else if (var0 == 3189) {
                      var3 = class46.field659[--class124.field1569];
-                     class511.method10165(var3);
+                     SBuffer.method10165(var3);
                      return 1;
                   } else {
                      return 2;

@@ -36,7 +36,7 @@ public class class154 {
       garbageValue = "882958875"
    )
    void method3837(Buffer var1) {
-      this.field1793 = var1.method11203();
+      this.field1793 = var1.readLong();
       this.field1787 = var1.read32BitArray();
 
       for(int var2 = var1.method11196(); var2 != 0; var2 = var1.method11196()) {

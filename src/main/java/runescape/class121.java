@@ -134,7 +134,7 @@ public class class121 {
             }
 
             if (value == 20 || value == 40 || value == 45 || value == 50) {
-                HitSplatDefinition.method10432(class43.field296);
+                HitSplatDefinition.setLoginState(class43.field296);
                 client.field351 = 0;
                 client.field448 = 0;
                 client.timer.method8249(value);

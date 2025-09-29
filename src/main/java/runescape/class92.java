@@ -88,7 +88,7 @@ public class class92 {
    @ObfuscatedSignature(
       descriptor = "Ltf;"
    )
-   class511 field1301;
+   SBuffer field1301;
 
    class92() {
    }
@@ -169,7 +169,7 @@ public class class92 {
       descriptor = "(I)Ltf;",
       garbageValue = "-482460285"
    )
-   class511 getSocket() {
+   SBuffer getSocket() {
       return this.field1301;
    }
 
@@ -178,7 +178,7 @@ public class class92 {
       descriptor = "(Ltf;B)V",
       garbageValue = "36"
    )
-   void method2951(class511 var1) {
+   void method2951(SBuffer var1) {
       this.field1301 = var1;
    }
 

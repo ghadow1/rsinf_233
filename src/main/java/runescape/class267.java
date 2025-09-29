@@ -547,9 +547,9 @@ public class class267 {
 
                      var10 += 15;
                      var37 = 361;
-                     if (class511.field5447 != null) {
-                        var39 = class511.field5447.field5162 / 2;
-                        if (var5 == 1 && var33 >= class511.field5447.field5160 - var39 && var33 <= var39 + class511.field5447.field5160 && var34 >= var37 - 15 && var34 < var37) {
+                     if (SBuffer.field5447 != null) {
+                        var39 = SBuffer.field5447.field5162 / 2;
+                        if (var5 == 1 && var33 >= SBuffer.field5447.field5160 - var39 && var33 <= var39 + SBuffer.field5447.field5160 && var34 >= var37 - 15 && var34 < var37) {
                            switch(class52.field735) {
                            case 1:
                               class22.method330("https://support.runescape.com/hc/en-gb/articles/360001552065", true, false);

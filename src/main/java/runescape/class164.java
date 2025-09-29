@@ -44,7 +44,7 @@ public class class164 extends class167 {
       this.field1880 = var1.readUnsignedShort();
       this.field1879 = var1.method11197();
       this.field1881 = var1.readUnsignedShort();
-      var1.method11203();
+      var1.readLong();
       this.field1882 = var1.method11207();
       var1.method11196();
    }

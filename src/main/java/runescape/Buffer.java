@@ -436,7 +436,7 @@ public class Buffer extends class544 {
       descriptor = "(B)J",
       garbageValue = "5"
    )
-   public long method11203() {
+   public long readLong() {
       long var1 = (long)this.read32BitArray() & 4294967295L;
       long var3 = (long)this.read32BitArray() & 4294967295L;
       return (var1 << 32) + var3;

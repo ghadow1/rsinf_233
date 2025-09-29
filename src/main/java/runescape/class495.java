@@ -113,7 +113,7 @@ public class class495 extends class501 {
    )
    public final void method9886(Buffer var1) {
       this.method9884(var1.method11207());
-      long var2 = var1.method11203();
+      long var2 = var1.readLong();
       long var5 = var2;
       String var4;
       int var7;

@@ -20,7 +20,7 @@ final class class573 implements class569 {
       garbageValue = "-944661961"
    )
    public Object vmethod11037(Buffer var1) {
-      return var1.method11203();
+      return var1.readLong();
    }
 
    @ObfuscatedName("ao")

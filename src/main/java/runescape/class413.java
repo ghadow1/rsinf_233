@@ -22,7 +22,7 @@ public class class413 {
    @ObfuscatedSignature(
       descriptor = "Ltf;"
    )
-   class511 field4988;
+   SBuffer field4988;
    @ObfuscatedName("au")
    @ObfuscatedGetter(
       intValue = 255957077
@@ -370,7 +370,7 @@ public class class413 {
       descriptor = "(Ltf;ZI)V",
       garbageValue = "-129918506"
    )
-   public void method8451(class511 var1, boolean var2) {
+   public void method8451(SBuffer var1, boolean var2) {
       if (this.field4988 != null) {
          try {
             this.field4988.vmethod10196();

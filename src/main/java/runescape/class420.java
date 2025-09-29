@@ -33,7 +33,7 @@ public class class420 {
       this.field5034 = var1.method11207();
       this.field5035 = var1.method11207();
       this.field5033 = var1.readUnsignedShort();
-      this.field5037 = var1.method11203();
+      this.field5037 = var1.readLong();
       int var4 = var1.read32BitArray();
       int var5 = var1.read32BitArray();
       this.field5032 = new class421();

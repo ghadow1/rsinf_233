@@ -182,7 +182,7 @@ public class class109 {
       var2.method3462(this.field1445[var1], 0);
       this.field1455 = new float[this.field1429];
       var2.method3465();
-      int var3 = var2.method3467(class511.method10164(this.field1428.length - 1));
+      int var3 = var2.method3467(SBuffer.method10164(this.field1428.length - 1));
       boolean var4 = this.field1435[var3];
       int var5 = var4 ? this.field1429 : this.field1431;
       boolean var6 = false;
@@ -293,7 +293,7 @@ public class class109 {
             var23[var28 * 4 + 1] = (var30 - var32) * var33 + (var29 - var31) * var34;
          }
 
-         var28 = class511.method10164(var5 - 1);
+         var28 = SBuffer.method10164(var5 - 1);
 
          int var48;
          int var49;
@@ -476,7 +476,7 @@ public class class109 {
          }
 
          int[] var24 = new int[var8];
-         int var13 = class511.method10164(var8 - 1);
+         int var13 = SBuffer.method10164(var8 - 1);
 
          for(int var14 = 0; var14 < var8; ++var14) {
             int var18 = var14;

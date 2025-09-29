@@ -10,7 +10,7 @@ public class class114 {
    @ObfuscatedSignature(
       descriptor = "Ltf;"
    )
-   static class511 field1503;
+   static SBuffer field1503;
    @ObfuscatedName("ls")
    @ObfuscatedSignature(
       descriptor = "Lel;"
